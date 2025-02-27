@@ -1,84 +1,153 @@
-import java.util.Random;
-import java.util.Scanner;
-public class snake420 {
+# Snake and Ladder Game in Java
 
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            Random random = new Random();
+## Introduction
 
+This is a simple **Snake and Ladder** game implemented in Java for two players. The game follows the classic rules where players roll a dice to advance their positions on the board. If a player lands on a ladder, they climb up, and if they land on a snake, they slide down. The first player to reach **100** wins!
 
-            System.out.print("Enter 1st player name: ");
-            String player1Name = scanner.nextLine();
-            System.out.print("Enter 2nd player name: ");
-            String player2Name = scanner.nextLine();
+## How to Play
 
-            int player1 = 0, player2 = 0;
-            boolean player1Turn = true;
+1. Run the program in a Java-supported environment.
+2. Enter the names of both players when prompted.
+3. Players take turns rolling the dice by pressing **Enter**.
+4. The dice roll determines how many steps a player moves forward.
+5. Landing on a **ladder** moves the player **up**.
+6. Landing on a **snake** moves the player **down**.
+7. The first player to reach **100** wins the game!
 
-            while (true) {
-                System.out.println("\n your current position ");
-                System.out.println(player1Name + ": " + player1);
-                System.out.println(player2Name + ": " + player2);
+## Features
 
-                String currentPlayer = player1Turn ? player1Name : player2Name;
-                System.out.println("\n" + currentPlayer + "'s turn. Press Enter to roll the dice...");
-                scanner.nextLine();
+- Two-player turn-based gameplay.
+- Randomized dice roll (values from 1 to 6).
+- Ladders and snakes implemented based on predefined positions.
+- Players cannot exceed **100**, and excess rolls are ignored.
+- Simple command-line interface.
 
-                int dice = random.nextInt(6) + 1;
-                System.out.println(currentPlayer + " rolled: " + dice);
+## Requirements
 
-                if (player1Turn) {
-                    if (player1 + dice <= 100) {
-                        player1 += dice;
-                        player1 = checkPosition(player1);
-                    } else {
-                        System.out.println("Roll exceeds 100, try again next turn!");
-                    }
-                    if (player1 == 100) {
-                        System.out.println("\n " + player1Name + " wins the game! ");
-                        break;
-                    }
-                } else {
-                    if (player2 + dice <= 100) {
-                        player2 += dice;
-                        player2 = checkPosition(player2);
-                    } else {
-                        System.out.println("Roll exceeds 100, try again next turn!");
-                    }
-                    if (player2 == 100) {
-                        System.out.println("\n " + player2Name + " wins the game! ");
-                        break;
-                    }
-                }
-                player1Turn = !player1Turn; // Switch turn
-            }
-            scanner.close();
-        }
+- Java Development Kit (JDK) installed (JDK 8 or later recommended).
 
-        private static int checkPosition(int position) {
-            int[] laddersStart = {3, 5, 11, 20, 27, 36, 51, 71, 80};
-            int[] laddersEnd = {22, 8, 26, 29, 84, 44, 67, 91, 99};
+## How to Run
 
-            int[] snakesStart = {17, 19, 21, 43, 56, 61, 64, 87, 93, 95, 98};
-            int[] snakesEnd = {4, 7, 9, 23, 53, 18, 60, 24, 73, 75, 78};
+1. Clone this repository or download the `snake2.java` file.
+2. Open a terminal or command prompt.
+3. Navigate to the folder containing the file.
+4. Compile the program using:
+   ```sh
+   javac snake2.java
+   ```
+5. Run the program using:
+   ```sh
+   java snake2
+   ```
 
-           
-            for (int i = 0; i < laddersStart.length; i++) {
-                if (position == laddersStart[i]) {
-                    System.out.println("Ladder found! Climbing up to " + laddersEnd[i]);
-                    return laddersEnd[i];
-                }
-            }
+## Example Gameplay
 
+```
+Enter 1st player name: Nikhil
+Enter 2nd player name: Avisha
 
-            for (int i = 0; i < snakesStart.length; i++) {
-                if (position == snakesStart[i]) {
-                    System.out.println("Oh no! Bitten by a snake. Sliding down to " + snakesEnd[i]);
-                    return snakesEnd[i];
-                }
-            }
+Current Positions:
+Nikhil: 0
+Avisha: 0
 
-            return position;
-        }
-    }
+Nikhil's turn. Press Enter to roll the dice...
+Nikhil rolled: 5
+# Snake and Ladder Game in Java
+
+## Introduction
+
+This is a simple **Snake and Ladder** game implemented in Java for two players. The game follows the classic rules where players roll a dice to advance their positions on the board. If a player lands on a ladder, they climb up, and if they land on a snake, they slide down. The first player to reach **100** wins!
+
+## How to Play
+
+1. Run the program in a Java-supported environment.
+2. Enter the names of both players when prompted.
+3. Players take turns rolling the dice by pressing **Enter**.
+4. The dice roll determines how many steps a player moves forward.
+5. Landing on a **ladder** moves the player **up**.
+6. Landing on a **snake** moves the player **down**.
+7. The first player to reach **100** wins the game!
+
+## Features
+
+- Two-player turn-based gameplay.
+- Randomized dice roll (values from 1 to 6).
+- Ladders and snakes implemented based on predefined positions.
+- Players cannot exceed **100**, and excess rolls are ignored.
+- Simple command-line interface.
+
+## Requirements
+
+- Java Development Kit (JDK) installed (JDK 8 or later recommended).
+
+## How to Run
+
+1. Clone this repository or download the `snake2.java` file.
+2. Open a terminal or command prompt.
+3. Navigate to the folder containing the file.
+4. Compile the program using:
+   ```sh
+   javac snake2.java
+   ```
+5. Run the program using:
+   ```sh
+   java snake2
+   ```
+
+## Example Gameplay
+
+```
+Enter 1st player name: Nikhil
+Enter 2nd player name: Avisha
+
+Current Positions:
+MOHIT: 0
+Avisha: 0
+
+MOHIT's turn. Press Enter to roll the dice...
+MOHIT rolled: 5
+MOHIT moves to position 5.
+
+Avisha's turn. Press Enter to roll the dice...
+Avisha rolled: 3
+Avisha moves to position 22 (Ladder found!).
+
+...
+
+🎉 MOHIT wins the game! 🎉
+```
+
+## Contributing
+
+Feel free to fork this project and enhance it with features like:
+
+- Adding a graphical user interface (GUI).
+- Multiplayer mode.
+- Saving and loading game progress.
+
+## License
+
+This project is open-source and free to use.
+ moves to position 5.
+
+Avisha's turn. Press Enter to roll the dice...
+Avisha rolled: 3
+Avisha moves to position 22 (Ladder found!).
+
+...
+
+🎉 MOHIT wins the game! 🎉
+```
+
+## Contributing
+
+Feel free to fork this project and enhance it with features like:
+
+- Adding a graphical user interface (GUI).
+- Multiplayer mode.
+- Saving and loading game progress.
+
+## License
+
+This project is open-source and free to use.
 
